@@ -1,0 +1,26 @@
+container {
+    display: inline-block;
+    width: 100%;
+    padding: var(--section-padding)*2 0;
+        
+}
+    .container > .row-short{
+        display: inline-block;;
+        width: 600px;
+        margin-left: calc(50% - 300px);
+        background-color: bisque;
+    }
+    .container > .row > .column {
+        display: inline-block;
+        width: 600px;
+        margin-left: calc(50% - 300px);
+        background-color: aquamarine;
+    }
+
+        .container > .row > .left {
+             width: 50%;
+         }
+        .container > .row > .right {
+             width: 40%;
+            margin-left: 10%;
+        }
