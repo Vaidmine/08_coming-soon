@@ -1,26 +1,67 @@
-container {
+
+.container {
     display: inline-block;
     width: 100%;
-    padding: var(--section-padding)*2 0;
-        
+    padding: calc(var(--section-padding) * 2) 0;
 }
-    .container > .row-short{
-        display: inline-block;;
-        width: 600px;
-        margin-left: calc(50% - 300px);
-        background-color: bisque;
-    }
-    .container > .row > .column {
+    .container > .row-short {
         display: inline-block;
         width: 600px;
-        margin-left: calc(50% - 300px);
-        background-color: aquamarine;
+        margin: 0 calc(50% - 300px);
+    }
+    .container > .row {
+        display: inline-block;
+        width: 1000px;
+        margin: 0 calc(50% - 500px);
+    }
+        .container > .row > .column {
+            display: inline-block;
+            float: left;
+        }
+            .container > .row > .column.left {
+                width: 50%;
+            }
+            .container > .row > .column.right {
+                width: 40%;
+                margin-left: 10%;
+            }
+
+@media (max-width: 1100px) {
+    .container > .row {
+        width: 800px;
+        margin: 0 calc(50% - 400px);
     }
 
-        .container > .row > .left {
-             width: 50%;
-         }
-        .container > .row > .right {
-             width: 40%;
-            margin-left: 10%;
+.bg-main-color {
+    background-color: var(--main-color);
+}
+
+@media (max-width: 900px) {
+    .container > .row {
+        width: 600px;
+        margin: 0 calc(50% - 300px);
+    }
+}
+
+@media (max-width: 700px) {
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+        .container > .row-short {
+            width: 100%;
+            margin: 0;
         }
+        .container > .row {
+            width: 100%;
+            margin: 0;
+        }
+            .container > .row > .column.left {
+                width: 100%;
+            }
+            .container > .row > .column.right {
+                width: 100%;
+                margin: 0;
+                margin-top: calc(var(--section-padding) * 2);
+            }
+}

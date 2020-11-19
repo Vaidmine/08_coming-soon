@@ -1,4 +1,8 @@
+
+/* CSS variables */
+
 :root {
     --section-padding: 30px;
-    --main-color: #03a9f5;
+    --hero-space: 20px;
+    --main-color: #03A9F3;
 }
