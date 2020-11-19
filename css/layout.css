@@ -31,6 +31,9 @@
         width: 800px;
         margin: 0 calc(50% - 400px);
     }
+
+.bg-main-color {
+    background-color: var(--main-color);
 }
 
 @media (max-width: 900px) {
