@@ -1,32 +1,30 @@
-import { isInputValidation } from "./isInputValidation.js";
+import { isInputValid } from "./isInputValid.js";
+import { isValidSocialItem } from './isValidSocialItem.js';
 
-
-function renderSocials(data) {
+/**
+ * Social nuorodu generavimas is pateiktu duomenu i nurodyta vieta DOM'e.
+ * @param {string} selector Selectorius, kaip rasti norima vieta, kur bus istatomas sugeneruotas kodas
+ * @param {Array} data Duomenu masyvas su objektais, kurie reprezentuoja social nuorodas
+ * @returns {boolean} Logikos vykdymo metu radus klaida grazinas `false`, o funkcijai suveikus teisingai - `true`
+ */
+function renderSocials(selector, data) {
     // input validation
-    if (!Array.isArray(data)) {
-        console.error('ERROR: social ikonom generuoti reikia array tipo duomenu.');
-        return false;
-    }
-    if (data.length === 0) {
-        console.error('ERROR: social ikonom generuoti reikia ne tuscio array tipo duomenu saraso.');
+    if (!isInputValid(selector, data)) {
         return false;
     }
 
     // logic
-    const socialsDOM = document.querySelector('footer > .row');
+    const socialsDOM = document.querySelector(selector);
+    if (!socialsDOM) {
+        console.error('ERROR: nerasta turinio generavimo vieta');
+        return false;
+    }
+
     let HTML = '';
 
     for (let i = 0; i < data.length; i++) {
         const item = data[i];
-        if (typeof item !== 'object') {
-            continue;
-        }
-        if (typeof item.link !== 'string' ||
-            item.link === '') {
-            continue;
-        }
-        if (typeof item.icon !== 'string' ||
-            item.icon === '') {
+        if (!isValidSocialItem(item)) {
             continue;
         }
         HTML += `<a href="${item.link}" target="_blank" class="fa fa-${item.icon}" aria-hidden="true"></a>`;
@@ -35,7 +33,7 @@ function renderSocials(data) {
     // post logic validation
     if (HTML === '') {
         console.error('ERROR: nepavyko sugeneruoti social ikonu/nuorodu.');
-        return false;
+        return false
     }
 
     // return
