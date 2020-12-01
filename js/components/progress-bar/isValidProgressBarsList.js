@@ -1,4 +1,3 @@
-
 function isValidProgressBarsList(list) {
     if (!Array.isArray(list)) {
         console.error('ERROR: turi buti array tipo duomenys.');
