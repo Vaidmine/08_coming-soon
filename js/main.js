@@ -15,4 +15,4 @@ renderClock('.clock');
 renderAllProgressBars(progressBarData);
 
 formValidator('.hero .form');
-formValidator('main .form');
+formVali
